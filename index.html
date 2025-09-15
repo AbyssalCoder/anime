@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Your ultimate guide to the latest and greatest anime movie premieres in Indian theatres. Get details, showtimes, and booking info.">
+    <meta name="keywords" content="anime, movies, premieres, theatre, demon slayer, your name, the imaginary, detective conan, spy x family, blue lock, haikyuu, weathering with you, suzume, chainsaw man, shin chan">
+    <meta name="author" content="Anime Premieres">
+
+    <title>Anime Movie Premiere POP! (Corrected Images)</title>
+    
+    <!-- Google Fonts for Comic/Anime Style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- All CSS is now embedded directly in the HTML file for reliability -->
+    <style>
+        /* CSS Variables for easy color management */
+        :root {
+            --primary-color: #FFD300; /* Brighter Yellow */
+            --secondary-color: #D00000; /* Deeper Red */
+            --accent-color: #4361EE; /* Electric Blue */
+            
+            /* Light Theme */
+            --background-light: rgba(241, 250, 238, 0.85); /* FIXED: More transparent */
+            --text-light: #1D3557;
+            --border-light: #000000;
+            --shadow-light: var(--text-light);
+
+            /* Dark Theme */
+            --background-dark: rgba(20, 20, 20, 0.85); /* FIXED: More transparent */
+            --text-dark: #EAEAEA;
+            --border-dark: #FFFFFF;
+            --shadow-dark: #000;
+            
+            /* Default to light theme */
+            --bg: var(--background-light);
+            --text: var(--text-light);
+            --card-text: #FFFFFF; /* Text on cards will be light */
+            --border: var(--border-light);
+            --shadow: var(--shadow-light);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0; padding: 0;
+            line-height: 1.6; overflow-x: hidden;
+            
+            /* ADDED: Background image */
+            background-image: url('assets/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            /* Fallback color if image doesn't load */
+            background-color: #F1FAEE;
+        }
+
+        .theme-container {
+            background-color: var(--bg); 
+            color: var(--text);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+        
+        /* --- HEADER --- */
+        .main-header {
+            text-align: center; padding: 3rem 1rem;
+            background-color: var(--secondary-color); color: white;
+            /* FIXED: Border is now always black */
+            border-bottom: 8px solid var(--border-light);
+            transform: skewY(-3deg); margin-top: -30px;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+        }
+        .main-header-content { transform: skewY(3deg); }
+
+        @keyframes title-pop {
+            0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+            70% { transform: scale(1.1) rotate(3deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .main-header h1 {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(3rem, 10vw, 6rem); margin: 0;
+            letter-spacing: 4px;
+            /* FIXED: Text shadow is now always black */
+            text-shadow: 5px 5px 0px var(--border-light), -2px -2px 0 var(--accent-color);
+            animation: title-pop 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5em; /* Space between text and explosion */
+        }
+        
+        .title-explosion {
+            width: clamp(2.5rem, 8vw, 4.5rem);
+            height: clamp(2.5rem, 8vw, 4.5rem);
+            transform-origin: center;
+            animation: title-pop 0.6s 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+            opacity: 0; /* Start hidden for animation */
+            /* FIXED: Drop shadow is now always black */
+            filter: drop-shadow(3px 3px 0px var(--border-light));
+        }
+
+        .main-header p { font-family: 'Permanent Marker', cursive; font-size: 1.5rem; margin: 0; }
+
+        /* --- NAVIGATION --- */
+        .movie-nav {
+            text-align: center; padding: 1.5rem 1rem;
+            background: var(--primary-color);
+            border-bottom: 4px solid var(--border-light);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .movie-nav h2 {
+            font-family: 'Bangers', cursive; font-size: 2rem;
+            margin: 0 0 1rem 0;
+            color: var(--border-light);
+            text-shadow: 2px 2px 0 #fff;
+        }
+        .movie-nav ul {
+            list-style-type: none; padding: 0; margin: 0;
+            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
+        }
+        .movie-nav a {
+            text-decoration: none;
+            color: var(--border-light);
+            border: 3px solid var(--border-light);
+            font-weight: bold;
+            padding: 10px 15px; background: white;
+            border-radius: 8px;
+            box-shadow: 4px 4px 0px var(--accent-color);
+            transition: all 0.2s ease;
+        }
+        .movie-nav a:hover {
+            transform: translateY(-5px) rotate(-3deg);
+            box-shadow: 8px 8px 0px var(--secondary-color);
+            background-color: #fffde7;
+        }
+
+        /* --- MAIN CONTENT --- */
+        main { max-width: 900px; margin: 4rem auto; padding: 0 1rem; }
+
+        @keyframes card-fade-in {
+            from { opacity: 0; transform: translateY(50px) rotate(5deg); }
+            to { opacity: 1; transform: translateY(0) rotate(0); }
+        }
+        
+        .movie-card {
+            color: var(--card-text);
+            margin-bottom: 4rem;
+            border: 4px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 10px 10px 0px var(--shadow);
+            opacity: 0; animation: card-fade-in 0.7s ease-out forwards;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center 30%;
+            min-height: 400px;
+            display: flex;
+            align-items: flex-end;
+        }
+        .movie-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.1) 100%);
+            z-index: 1;
+        }
+        .movie-card:hover {
+             transform: rotate(0) scale(1.03);
+             box-shadow: 15px 15px 0px var(--accent-color);
+        }
+        
+        .movie-details {
+            position: relative;
+            z-index: 2;
+            padding: 1.5rem;
+        }
+        
+        .movie-card:nth-of-type(2) { animation-delay: 0.2s; }
+        .movie-card:nth-of-type(3) { animation-delay: 0.4s; }
+        .movie-card:nth-of-type(4) { animation-delay: 0.6s; }
+        .movie-card:nth-of-type(5) { animation-delay: 0.8s; }
+        .movie-card:nth-of-type(6) { animation-delay: 1.0s; }
+        .movie-card:nth-of-type(7) { animation-delay: 1.2s; }
+        .movie-card:nth-of-type(8) { animation-delay: 1.4s; }
+        .movie-card:nth-of-type(9) { animation-delay: 1.6s; }
+        .movie-card:nth-of-type(10) { animation-delay: 1.8s; }
+        .movie-card:nth-of-type(11) { animation-delay: 2.0s; }
+        .movie-card:nth-of-type(12) { animation-delay: 2.2s; }
+        .movie-card:nth-of-type(13) { animation-delay: 2.4s; }
+
+        .movie-details h2 {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(2.5rem, 6vw, 3.5rem); margin-top: 0;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+            text-shadow: 3px 3px 0px var(--secondary-color);
+            filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.9));
+        }
+        
+        h3 { 
+            color: var(--primary-color); 
+            font-family: 'Permanent Marker', cursive; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+        }
+
+        .movie-details p {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+        }
+
+        .status {
+            font-family: 'Permanent Marker', cursive;
+            padding: 8px 15px 5px 15px;
+            border-radius: 5px;
+            display: inline-block; margin-bottom: 1rem; color: var(--border);
+            border: 3px solid var(--border);
+            position: relative;
+            font-weight: 900;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .premiering { background-color: #2a9d8f; }
+        .past { background-color: #6c757d; color: #fff; }
+        .anticipated { background-color: #0077b6; }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .bms-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary-color); color: var(--border);
+            text-decoration: none;
+            font-family: 'Bangers', cursive;
+            font-size: 1.4rem; letter-spacing: 1px;
+            border: 3px solid var(--border); border-radius: 10px;
+            box-shadow: 5px 5px 0px var(--border);
+            transition: all 0.1s ease-in-out;
+        }
+        .bms-button:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 8px 8px 0px var(--border);
+        }
+        .bms-button:active {
+            transform: translate(5px, 5px) scale(1.05) rotate(-2deg);
+            box-shadow: none;
+        }
+        
+        .watch-now-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--accent-color);
+            color: #FFFFFF;
+            text-decoration: none;
+            font-family: 'Bangers', cursive;
+            font-size: 1.4rem; letter-spacing: 1px;
+            border: 3px solid var(--border); border-radius: 10px;
+            box-shadow: 5px 5px 0px var(--border);
+            transition: all 0.1s ease-in-out;
+        }
+        .watch-now-button:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 8px 8px 0px var(--border);
+            background-color: #5371f0;
+        }
+        .watch-now-button:active {
+            transform: translate(5px, 5px) scale(1.05) rotate(2deg);
+            box-shadow: none;
+        }
+
+        .theme-switch-checkbox { display: none; }
+        .theme-switch-label {
+            position: fixed; top: 20px; right: 20px;
+            width: 60px; height: 30px;
+            background-color: #333; border-radius: 50px;
+            cursor: pointer; z-index: 200;
+            border: 3px solid var(--border);
+            transition: background-color 0.3s ease;
+        }
+        .theme-switch-label::after {
+            content: '☀️'; display: flex; align-items: center; justify-content: center;
+            font-size: 16px; position: absolute;
+            top: 2px; left: 2px;
+            width: 20px; height: 20px;
+            background-color: white; border-radius: 50%;
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        .theme-switch-checkbox:checked + .theme-switch-label { background-color: var(--accent-color); }
+        .theme-switch-checkbox:checked + .theme-switch-label::after {
+            content: '🌙'; transform: translateX(28px);
+        }
+        .theme-switch-checkbox:checked ~ .theme-container {
+            --bg: var(--background-dark); --text: var(--text-dark);
+            --border: var(--border-dark); --shadow: var(--shadow-dark);
+        }
+        
+        .bubbles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden; z-index: -1;
+        }
+        .bubbles span {
+            position: absolute; bottom: -100px;
+            background-color: var(--accent-color);
+            border-radius: 50%; opacity: 0.2;
+            animation: floatUp 20s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-120vh); }
+        }
+        .bubbles span:nth-child(1) { width: 40px; height: 40px; left: 10%; animation-duration: 18s; }
+        .bubbles span:nth-child(2) { width: 20px; height: 20px; left: 20%; animation-duration: 12s; animation-delay: 2s;}
+        .bubbles span:nth-child(3) { width: 50px; height: 50px; left: 35%; animation-duration: 20s; animation-delay: 5s;}
+        .bubbles span:nth-child(4) { width: 80px; height: 80px; left: 50%; animation-duration: 15s; }
+        .bubbles span:nth-child(5) { width: 35px; height: 35px; left: 65%; animation-duration: 11s; animation-delay: 1s;}
+        .bubbles span:nth-child(6) { width: 45px; height: 45px; left: 80%; animation-duration: 16s; animation-delay: 4s;}
+
+        footer {
+            margin-top: 50px; padding: 20px;
+            background-color: #1a1a1a; color: #f0f0f0;
+            text-align: center; font-family: 'Arial', sans-serif;
+            border-top: 4px solid var(--primary-color);
+            position: relative; z-index: 10;
+        }
+        
+        @media (max-width: 768px) {
+            .movie-card { min-height: 350px; }
+        }
+    </style>
+</head>
+<body>
+    
+    <input type="checkbox" id="theme-switch" class="theme-switch-checkbox">
+    <label for="theme-switch" class="theme-switch-label"></label>
+
+    <div class="theme-container">
+        <header class="main-header">
+            <div class="main-header-content">
+                <h1>
+                    <span>ANIME PREMIERE POP!</span>
+                    <svg class="title-explosion" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="50,2 61,39 98,39 68,62 79,98 50,75 21,98 32,62 2,39 39,39" stroke="var(--border-light)" stroke-width="4" fill="var(--primary-color)"/>
+                        <polygon points="50,12 58,42 88,42 63,58 71,88 50,70 29,88 37,58 12,42 42,42" fill="var(--secondary-color)"/>
+                    </svg>
+                </h1>
+                <p>Your Comic-Style Guide to Anime on the Big Screen!</p>
+            </div>
+        </header>
+
+        <nav class="movie-nav">
+            <h2>Quick Jumps</h2>
+            <ul>
+                <li><a href="#chainsaw-man">Chainsaw Man</a></li>
+                <li><a href="#shin-chan">Shin Chan</a></li>
+                <li><a href="#demon-slayer">Demon Slayer</a></li>
+                <li><a href="#suzume">Suzume</a></li>
+                <li><a href="#weathering">Weathering With You</a></li>
+                <li><a href="#spy-family">Spy x Family</a></li>
+                <li><a href="#blue-lock">Blue Lock</a></li>
+                <li><a href="#the-imaginary">The Imaginary</a></li>
+                <li><a href="#conan">Detective Conan</a></li>
+                <li><a href="#your-name">Your Name.</a></li>
+                <li><a href="#one-piece-red">One Piece Film: Red</a></li>
+                <li><a href="#haikyuu">Haikyuu!!</a></li>
+                <li><a href="#free-movie">Free! The Final Stroke</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- Chainsaw Man -->
+            <section id="chainsaw-man" class="movie-card" style="background-image: url('assets/chainsawman.jpg');">
+                <div class="movie-details">
+                    <h2>Chainsaw Man The Movie: Reze Arc</h2>
+                    <p class="status premiering">Releasing: Sep 26, 2025</p>
+                    <h3>About the Movie:</h3>
+                    <p>Denji encounters a new romantic interest, Reze, who, unbeknownst to him, harbors a dangerous ulterior motive that will change his life forever.</p>
+                    <div class="button-group">
+                        <a href="https://in.bookmyshow.com/kolkata/movies/chainsaw-man-the-movie-reze-arc/ET00448819" target="_blank" class="bms-button">Check Showtimes</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Shin Chan -->
+            <section id="shin-chan" class="movie-card" style="background-image: url('assets/crayon-shin-chan-32nd-film-trailer.jpg');">
+                <div class="movie-details">
+                    <h2>Shin chan: The Spicy Kasukabe Dancers</h2>
+                    <p class="status premiering">Releasing: Sep 26, 2025</p>
+                    <h3>About the Movie:</h3>
+                    <p>Shin chan and friends head to India for a dance competition, but when Bo chan is possessed by an evil force, he turns into a powerful tyrant. It's up to the Kasukabe Guard to save the world!</p>
+                    <div class="button-group">
+                        <a href="https://in.bookmyshow.com/kolkata/movies/shin-chan-the-spicy-kasukabe-dancers-in-india/ET00447688" target="_blank" class="bms-button">Check Showtimes</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Demon Slayer -->
+            <section id="demon-slayer" class="movie-card" style="background-image: url('assets/demon-slayer-kimetsu-no-yaiba-infinity-castle.jpeg');">
+                <div class="movie-details">
+                    <h2>Demon Slayer: Infinity Castle</h2>
+                    <p class="status premiering">Now in Theatres!</p>
+                    <h3>About the Movie:</h3>
+                    <p>The Demon Slayer Corps plunge into Infinity Castle to defeat Muzan. The remaining Hashiras and Demon Slayers are pitted against the terrifying members of the Twelve Kizuki.</p>
+                    <div class="button-group">
+                        <a href="https://in.bookmyshow.com/kolkata/movies/demon-slayer-kimetsu-no-yaiba-infinity-castle/ET00416673" target="_blank" class="bms-button">Book Tickets</a>
+                        <a href="https://hianime.nz/kimetsu-no-yaiba-movie-mugen-ressha-hen-15763?ref=search" target="_blank" class="watch-now-button">Watch Previous</a>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Suzume -->
+            <section id="suzume" class="movie-card" style="background-image: url('assets/Suzume_no_Tojimari_.avif');">
+                <div class="movie-details">
+                    <h2>Suzume no Tojimari</h2>
+                    <p class="status past">Premiered in India: April 21, 2023</p>
+                    <h3>About the Movie:</h3>
+                    <p>A modern action-adventure road story where a 17-year-old girl named Suzume helps a mysterious young man close doors from the other side that are causing disasters all over Japan.</p>
+                    <div class="button-group">
+                        <a href="https://in.bookmyshow.com/explore/movies" target="_blank" class="bms-button">Check Showtimes</a>
+                        <a href="https://hianime.nz/suzumes-doorlocking-18190" target="_blank" class="watch-now-button">Watch Now</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Weathering With You -->
+            <section id="weathering" class="movie-card" style="background-image: url('assets/weathering-with-you.jpg');">
+                <div class="movie-details">
+                    <h2>Weathering With You</h2>
+                    <p class="status past">Premiered in India: October 11, 2019</p>
+                    <h3>About the Movie:</h3>
+                    <p>A high-school boy who has run away to Tokyo befriends a girl who appears to be able to manipulate the weather. Their powers and bond are put to the test as the city faces an unprecedented supernatural storm.</p>
+                    <div class="button-group">
+                        <a href="https://in.bookmyshow.com/explore/movies" target="_blank" class="bms-button">Check Showtimes</a>
+                        <a href="https://hianime.nz/weathering-with-you-111?ref=search" target="_blank" class="watch-now-button">Watch Now</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- The Imaginary -->
+            <section id="the-imaginary" class="movie-card" style="background-image: url('assets/imaginary.jpg');">
+                <div class="movie-details">
+                    <h2>The Imaginary</h2>
+                    <p class="status past">Released on Netflix: July 5, 2024</p>
+                    <h3>About the Movie:</h3>
+                    <p>From the acclaimed Studio Ponoc, this film follows Rudger, an imaginary friend who must find his human, Amanda, before he fades away. He discovers a hidden town of forgotten imaginary friends and must escape a sinister hunter.</p>
+                    <div class="button-group">
+                        <a href="https://in.bookmyshow.com/" target="_blank" class="bms-button">Check Details</a>
+                        <a href="https://hianime.nz/the-imaginary-18561" target="_blank" class="watch-now-button">Watch Now</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Detective Conan -->
+            <section id="conan" class="movie-card" style="background-image: url('assets/detective_conan.jpg');">
+                <div class="movie-details">
+                    <h2>Detective Conan: The Million-dollar Pentagram</h2>
+                    <p class="status past">Premiered in India: May 31, 2024</p>
+                    <h3>About the Movie:</h3>
+                    <p>Kaito Kid sets his sights on a historic Japanese sword, leading to a thrilling confrontation with his rival, Detective Conan. A murder mystery unfolds in Hakodate, revealing deep secrets connected to the sword and a wartime treasure.</p>
+                    <a href="https://in.bookmyshow.com/" target="_blank" class="bms-button">Check Showtimes</a>
+                </div>
+            </section>
+            
+            <!-- Spy x Family -->
+            <section id="spy-family" class="movie-card" style="background-image: url('assets/Spy_family_Code_White.webp');">
+                <div class="movie-details">
+                    <h2>Spy x Family Code: White</h2>
+                    <p class="status past">Premiered in India: May 24, 2024</p>
+                    <h3>About the Movie:</h3>
+                    <p>He's a spy. She's an assassin. The Forger family's winter vacation turns chaotic when Anya gets involved in a mission that could determine the world's fate.</p>
+                    <div class="button-group">
+                        <a href="https://in.bookmyshow.com/kolkata/movies/spy-x-family-code-white/ET00388277" target="_blank" class="bms-button">Check Showtimes</a>
+                        <a href="https://hianime.nz/spy-x-family-code-white-19291?ref=search" target="_blank" class="watch-now-button">Watch Now</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blue Lock -->
+            <section id="blue-lock" class="movie-card" style="background-image: url('assets/blue_lock.jpg');">
+                <div class="movie-details">
+                    <h2>Blue Lock The Movie: Episode Nagi</h2>
+                    <p class="status past">Premiered in India: July 12, 2024</p>
+                    <h3>About the Movie:</h3>
+                    <p>"That's a hassle." That was Nagi Seishiro's favorite phrase. But that changes when Mikage Reo discovers his hidden talent, inspiring him to play soccer and share his skill.</p>
+                    <div class="button-group">
+                        <a href="https://in.bookmyshow.com/kolkata/movies/blue-lock-the-movie-episode-nagi/ET00394784" target="_blank" class="bms-button">Check Showtimes</a>
+                        <a href="https://hianime.nz/blue-lock-episode-nagi-19085" target="_blank" class="watch-now-button">Watch Now</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Haikyuu -->
+            <section id="haikyuu" class="movie-card" style="background-image: url('assets/haikyuu.avif');">
+                <div class="movie-details">
+                    <h2>Haikyuu!! The Dumpster Battle</h2>
+                    <p class="status past">Premiered in India: May 31, 2024</p>
+                    <h3>About the Movie:</h3>
+                    <p>The fated rivalry between Karasuno (the Crows) and Nekoma (the Cats) finally comes to a head in the highly anticipated "Dumpster Battle" at the national tournament.</p>
+                    <div class="button-group">
+                        <a href="https://in.bookmyshow.com/kolkata/movies/haikyuu-the-dumpster-battle/ET00389330" target="_blank" class="bms-button">Check Showtimes</a>
+                        <a href="https://hianime.nz/haikyu-movie-the-dumpster-battle-18922?ref=search" target="_blank" class="watch-now-button">Watch Now</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Your Name -->
+            <section id="your-name" class="movie-card" style="background-image: url('assets/your_name.avif');">
+                <div class="movie-details">
+                    <h2>Your Name. (Kimi no Na wa)</h2>
+                    <p class="status past">Premiered in India: August 11, 2017</p>
+                    <h3>About the Movie:</h3>
+                    <p>Two teenagers share a profound, magical connection upon discovering they are swapping bodies. But their bond becomes a race against time when a disaster threatens.</p>
+                    <div class="button-group">
+                        <a href="https://in.bookmyshow.com/explore/movies" target="_blank" class="bms-button">Check Showtimes</a>
+                        <a href="https://hianime.nz/your-name-10?ref=search" target="_blank" class="watch-now-button">Watch Now</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- One Piece Red -->
+            <section id="one-piece-red" class="movie-card" style="background-image: url('assets/one_piece_film_red_.webp');">
+                <div class="movie-details">
+                    <h2>One Piece Film: Red</h2>
+                    <p class="status past">Premiered in India: October 7, 2022</p>
+                    <h3>About the Movie:</h3>
+                    <p>The Straw Hats head to a music festival to see Uta, the world's most beloved singer, who is revealed to be the daughter of the legendary pirate, Shanks.</p>
+                    <div class="button-group">
+                        <a href="https://in.bookmyshow.com/explore/movies" target="_blank" class="bms-button">Check Showtimes</a>
+                        <a href="https://hianime.nz/one-piece-film-red-18236" target="_blank" class="watch-now-button">Watch Now</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Free! Movie -->
+            <section id="free-movie" class="movie-card" style="background-image: url('assets/free final stroke_.jpg');">
+                <div class="movie-details">
+                    <h2>Free! –the Final Stroke–</h2>
+                    <p class="status past">Premiered in India: 2022 (Two Parts)</p>
+                    <h3>About the Movie:</h3>
+                    <p>Haruka Nanase's journey for swimming perfection takes him to the world stage, forcing him to confront his dreams in this emotional finale.</p>
+                    <div class="button-group">
+                        <a href="https://in.bookmyshow.com/explore/movies" target="_blank" class="bms-button">Check Showtimes</a>
+                        <a href="https://hianime.nz/free-movie-4-the-final-stroke-zenpen-15706" target="_blank" class="watch-now-button">Watch Now</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Anime Premiere POP! All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Animated Bubbles Background -->
+    <div class="bubbles">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+</body>
+</html>
+
